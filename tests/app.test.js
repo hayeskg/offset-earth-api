@@ -16,6 +16,7 @@ describe('app', () => {
         return request(app)
           .get('/api/trees')
           .then(({ body }) => {
+            expect(body.treeCount).toBe(4627);
             body.trees.forEach((treeObj) => {
               expect(Object.keys(treeObj))
                 .toEqual(expect.arrayContaining([
@@ -32,6 +33,7 @@ describe('app', () => {
         return request(app)
           .get('/api/trees?varient=normal')
           .then(({ body }) => {
+            expect(body.treeCount).toBe(1472);
             body.trees.forEach((treeObj) => {
               expect(treeObj.varient).toBe('normal');
               expect(Object.keys(treeObj))
@@ -49,6 +51,7 @@ describe('app', () => {
         return request(app)
           .get('/api/trees?projectId=113')
           .then(({ body }) => {
+            expect(body.treeCount).toBe(1397);
             body.trees.forEach((treeObj) => {
               expect(treeObj.projectId).toBe(113);
               expect(Object.keys(treeObj))
