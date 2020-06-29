@@ -3,7 +3,7 @@
     "description": "See the available Offset Earth API endpoints"
   },
   "GET /api/trees": {
-    "description": "Serves an array of all tree objects, accepts queries",
+    "description": "Serves an array of all tree objects and total trees count, accepts queries",
     "queries": [
       "varient",
       "projectId"
