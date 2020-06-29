@@ -67,5 +67,39 @@ describe('app', () => {
       })
     })
   })
+  describe('error handling', () => {
+    test('Route not found message and status 404 returned when incorrect path is accessed', () => {
+      return request(app)
+        .get('/api/whatever')
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.msg).toBe('Route not found');
+        })
+    })
+    test('Route not found message and status 404 returned when incorrect path is accessed', () => {
+      return request(app)
+        .get('/api/trees/whatever')
+        .expect(404)
+        .then(({ body }) => {
+          expect(body.msg).toBe('Route not found');
+        })
+    })
+    test('Method not allowed message and status 405 returned when incorrect method other than GET is used', () => {
+      return request(app)
+        .delete('/api/trees')
+        .expect(405)
+        .then(({ body }) => {
+          expect(body.msg).toBe('Method not allowed');
+        })
+    })
+    test('Method not allowed message and status 405 returned when incorrect method other than GET is used', () => {
+      return request(app)
+        .patch('/api')
+        .expect(405)
+        .then(({ body }) => {
+          expect(body.msg).toBe('Method not allowed');
+        })
+    })
+  })
 
 })
