@@ -28,6 +28,40 @@ describe('app', () => {
             })
           })
       })
+      test('GET request with varient query responds with status 200 and all tree objects of correct varient', () => {
+        return request(app)
+          .get('/api/trees?varient=normal')
+          .then(({ body }) => {
+            body.trees.forEach((treeObj) => {
+              expect(treeObj.varient).toBe('normal');
+              expect(Object.keys(treeObj))
+                .toEqual(expect.arrayContaining([
+                  'id',
+                  'value',
+                  'createdAt',
+                  'projectId',
+                  'varient'
+                ]));
+            })
+          })
+      })
+      test('GET request with projectId query responds with status 200 and all tree objects of correct projecId', () => {
+        return request(app)
+          .get('/api/trees?projectId=113')
+          .then(({ body }) => {
+            body.trees.forEach((treeObj) => {
+              expect(treeObj.projectId).toBe(113);
+              expect(Object.keys(treeObj))
+                .toEqual(expect.arrayContaining([
+                  'id',
+                  'value',
+                  'createdAt',
+                  'projectId',
+                  'varient'
+                ]));
+            })
+          })
+      })
     })
   })
 
