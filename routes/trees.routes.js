@@ -1,5 +1,7 @@
 const treesRouter = require('express').Router();
+const { getAllTrees } = require('../controllers/trees.controller');
 
-treesRouter.get('/', (req, res) => res.send('Hello from Trees router.'));
+treesRouter.route('/')
+  .get(getAllTrees);
 
 module.exports = treesRouter;
