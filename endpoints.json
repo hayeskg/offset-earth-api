@@ -1,0 +1,23 @@
+{
+  "GET /api": {
+    "description": "See the available Offset Earth API endpoints"
+  },
+  "GET /api/trees": {
+    "description": "Serves an array of all tree objects, accepts queries",
+    "queries": [
+      "varient",
+      "projectId"
+    ],
+    "exampleResponse": {
+      "trees": [
+        {
+          "id": 3,
+          "value": 8,
+          "createdAt": "2019-07-07T01:30:01.308Z",
+          "projectId": 891,
+          "varient": "normal"
+        }
+      ]
+    }
+  }
+}
